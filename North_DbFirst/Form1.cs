@@ -146,6 +146,33 @@ namespace North_DbFirst
                 .ThenByDescending(x => x.Cost)
                 .ToList();
 
+            // ProductName | Total Order 
+
+            var query9 = _dContext.OrderDetails
+                .Include(x => x.Product)
+                .GroupBy(x => new { x.Product.ProductName })
+                .Select(x => new ProductNameTotalViewModel
+                {
+                    ProductName = x.Key.ProductName,
+                    Total = x.Sum(od => (decimal)(1 - od.Discount) * od.Quantity * od.UnitPrice)
+                })
+                .OrderByDescending(x => x.Total)
+                .ToList();
+
+            var query10 = from od in _dContext.OrderDetails
+                          join prod in _dContext.Products on od.ProductId equals prod.ProductId
+                          group new { od, prod } by new
+                          {
+                              prod.ProductName
+                          } into names
+                          orderby names.Key.ProductName ascending
+                          select new ProductNameTotalViewModel
+                          {
+                              ProductName = names.Key.ProductName,
+                              Total = Math.Round(names.Sum(x => (decimal)(1 - x.od.Discount) * x.od.Quantity * x.od.UnitPrice), 2)
+                          };
+
+
             Console.WriteLine();
         }
 
