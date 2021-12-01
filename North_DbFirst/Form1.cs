@@ -106,6 +106,46 @@ namespace North_DbFirst
                 .ThenByDescending(x => x.Count)
                 .ToList();
 
+            var query7 = from cat in _dContext.Categories
+                         join prod in _dContext.Products on cat.CategoryId equals prod.CategoryId
+                         join sup in _dContext.Suppliers on prod.SupplierId equals sup.SupplierId
+                         group new
+                         {
+                             cat,
+                             prod,
+                             sup
+                         } by new
+                         {
+                             cat.CategoryName,
+                             sup.CompanyName
+                         } into cats
+                         select new
+                         {
+                             CategoryName = cats.Key.CategoryName,
+                             CompanyName = cats.Key.CompanyName,
+                             Cost = cats.Sum(x => x.prod.UnitPrice * x.prod.UnitsInStock)
+                         };
+            dgvNorth.DataSource = query7
+                .OrderBy(x => x.CategoryName)
+                .ThenByDescending(x => x.Cost)
+                .ToList();
+
+            var query8 = _dContext.Products
+                .Include(x => x.Category)
+                .Include(x => x.Supplier)
+                .GroupBy(x => new { x.Category.CategoryName, x.Supplier.CompanyName })
+                .Select(x => new
+                {
+                    x.Key.CategoryName,
+                    x.Key.CompanyName,
+                    Cost = x.Sum(p => p.UnitsInStock * p.UnitPrice)
+                });
+
+            dgvNorth.DataSource = query8
+                .OrderBy(x => x.CategoryName)
+                .ThenByDescending(x => x.Cost)
+                .ToList();
+
             Console.WriteLine();
         }
 
