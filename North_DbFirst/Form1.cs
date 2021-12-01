@@ -81,6 +81,31 @@ namespace North_DbFirst
 
             RaporuGoster();
 
+            var query6 = from cat in _dContext.Categories
+                         join prod in _dContext.Products on cat.CategoryId equals prod.CategoryId
+                         join sup in _dContext.Suppliers on prod.SupplierId equals sup.SupplierId
+                         group new
+                         {
+                             cat,
+                             prod,
+                             sup
+                         } by new
+                         {
+                             cat.CategoryName,
+                             sup.CompanyName
+                         } into cats
+                         select new
+                         {
+                             CategoryName = cats.Key.CategoryName,
+                             CompanyName = cats.Key.CompanyName,
+                             Count = cats.Count()
+                         };
+
+            dgvNorth.DataSource = query6
+                .OrderBy(x => x.CategoryName)
+                .ThenByDescending(x => x.Count)
+                .ToList();
+
             Console.WriteLine();
         }
 
@@ -88,14 +113,14 @@ namespace North_DbFirst
 
         private void btnIleri_Click(object sender, EventArgs e)
         {
-            if(_offset+1 == _maxPage) return;
+            if (_offset + 1 == _maxPage) return;
             _offset++;
             RaporuGoster();
         }
 
         private void btnGeri_Click(object sender, EventArgs e)
         {
-            if(_offset == 0) return;
+            if (_offset == 0) return;
             _offset--;
             RaporuGoster();
         }
@@ -118,6 +143,20 @@ namespace North_DbFirst
             {
                 _maxPage = (int)Math.Ceiling(query.Count() / Convert.ToDouble(_pageSize));
             }
+
+            query.Count(x => x.UnitPrice < 20);
+            query.Sum(x => x.UnitPrice);
+            query.Average(x => x.UnitPrice);
+            query.Max(x => x.UnitPrice);
+            query.Min(x => x.UnitPrice);
+
+            query.Any();
+
+            if (query.All(x => x.CategoryName != "Beverages"))
+            {
+
+            }
+
 
             var result = query
              .OrderBy(x => x.CategoryName)
