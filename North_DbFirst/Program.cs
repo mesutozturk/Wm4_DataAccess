@@ -14,7 +14,7 @@ namespace North_DbFirst
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UrunForm());
+            Application.Run(new SiparisForm());
         }
     }
 }
