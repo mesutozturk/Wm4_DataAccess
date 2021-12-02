@@ -1,4 +1,4 @@
-﻿namespace North_DbFirst
+﻿namespace North_DbFirst.ViewModels
 {
     public class ProductNameTotalViewModel
     {

@@ -1,10 +1,10 @@
-﻿using North_DbFirst.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using North_DbFirst.Models;
+using North_DbFirst.ViewModels;
 using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using Microsoft.EntityFrameworkCore;
-using North_DbFirst.ViewModels;
 
 namespace North_DbFirst
 {
