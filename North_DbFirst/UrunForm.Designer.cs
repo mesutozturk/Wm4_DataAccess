@@ -124,6 +124,7 @@ namespace North_DbFirst
             this.btnSil.TabIndex = 8;
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = true;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // btnGuncelle
             // 
@@ -133,6 +134,7 @@ namespace North_DbFirst
             this.btnGuncelle.TabIndex = 9;
             this.btnGuncelle.Text = "Güncelle";
             this.btnGuncelle.UseVisualStyleBackColor = true;
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
             // UrunForm
             // 
