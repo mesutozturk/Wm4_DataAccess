@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KuzeyCodeFirst.Migrations
 {
     [DbContext(typeof(KuzeyContext))]
-    [Migration("20211206083203_AddStokMiktari")]
-    partial class AddStokMiktari
+    [Migration("20211206085159_KateogriAciklama")]
+    partial class KateogriAciklama
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,8 +28,8 @@ namespace KuzeyCodeFirst.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Aciklama")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Ad")
                         .IsRequired()
@@ -52,6 +52,9 @@ namespace KuzeyCodeFirst.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("DevamEtmiyorMu")
+                        .HasColumnType("bit");
 
                     b.Property<decimal>("Fiyat")
                         .HasPrecision(10, 2)

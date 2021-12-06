@@ -12,7 +12,7 @@ namespace KuzeyCodeFirst.Models
         [Required(ErrorMessage = "Ad alanı boş geçilemez")]
         [StringLength(30, ErrorMessage = "Ad alanı en fazla 30 karakter olur")]
         public string Ad { get; set; }
-        [StringLength(250)]
+        [StringLength(200)]
         public string Aciklama { get; set; }
 
         public ICollection<Urun> Urunler { get; set; } = new HashSet<Urun>();

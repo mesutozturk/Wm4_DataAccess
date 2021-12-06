@@ -2,22 +2,22 @@
 
 namespace KuzeyCodeFirst.Migrations
 {
-    public partial class AddStokMiktari : Migration
+    public partial class AddDevamColumn : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "StokMiktari",
+            migrationBuilder.AddColumn<bool>(
+                name: "DevamEtmiyorMu",
                 table: "Urunler",
-                type: "int",
+                type: "bit",
                 nullable: false,
-                defaultValue: 0);
+                defaultValue: false);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "StokMiktari",
+                name: "DevamEtmiyorMu",
                 table: "Urunler");
         }
     }

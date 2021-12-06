@@ -3,14 +3,16 @@ using KuzeyCodeFirst.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KuzeyCodeFirst.Migrations
 {
     [DbContext(typeof(KuzeyContext))]
-    partial class KuzeyContextModelSnapshot : ModelSnapshot
+    [Migration("20211206083719_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,8 +28,8 @@ namespace KuzeyCodeFirst.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Aciklama")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("Ad")
                         .IsRequired()
@@ -50,9 +52,6 @@ namespace KuzeyCodeFirst.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<bool>("DevamEtmiyorMu")
-                        .HasColumnType("bit");
 
                     b.Property<decimal>("Fiyat")
                         .HasPrecision(10, 2)

@@ -14,6 +14,7 @@ namespace KuzeyCodeFirst.Models
         public int KategorId { get; set; }
         [Range(0, 10000)]
         public int StokMiktari { get; set; }
+        public bool DevamEtmiyorMu { get; set; } = true;
 
         [ForeignKey(nameof(KategorId))]
         public Kategori Kategori { get; set; }
