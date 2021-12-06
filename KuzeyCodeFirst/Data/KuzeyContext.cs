@@ -27,6 +27,26 @@ namespace KuzeyCodeFirst.Data
             modelBuilder.Entity<Urun>()
                 .Property(x => x.Fiyat)
                 .HasPrecision(10, 2);
+
+            modelBuilder.Entity<SiparisDetay>()
+                .ToTable("SiparisDetaylari");
+
+            modelBuilder.Entity<SiparisDetay>()
+                .HasKey(x => new { x.SiparisId, x.UrunId }); //composite key
+
+            modelBuilder.Entity<SiparisDetay>()
+                .HasOne<Siparis>(sd => sd.Siparis)
+                .WithMany(s =>s.SiparisDetaylari)
+                .HasForeignKey(sd=>sd.SiparisId);
+
+            modelBuilder.Entity<SiparisDetay>()
+                .HasOne<Urun>(sd => sd.Urun)
+                .WithMany(u => u.SiparisDetaylari)
+                .HasForeignKey(sd => sd.UrunId);
+            
+            modelBuilder.Entity<SiparisDetay>()
+                .Property(x => x.Fiyat)
+                .HasPrecision(10, 2);
         }
     }
 }

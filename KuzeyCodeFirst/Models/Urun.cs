@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KuzeyCodeFirst.Models
@@ -18,5 +19,6 @@ namespace KuzeyCodeFirst.Models
 
         [ForeignKey(nameof(KategorId))]
         public Kategori Kategori { get; set; }
+        public ICollection<SiparisDetay> SiparisDetaylari { get; set; } = new HashSet<SiparisDetay>();
     }
 }
