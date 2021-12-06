@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-using KuzeyCodeFirst.Models;
+﻿using KuzeyCodeFirst.Models;
 using KuzeyCodeFirst.Models.Abstracts;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
 
 namespace KuzeyCodeFirst.Data
 {
@@ -52,7 +52,6 @@ namespace KuzeyCodeFirst.Data
                 ((BaseEntity)item.Entity).IsDeleted = true;
                 item.State = EntityState.Modified;
             }
-
 
             return base.SaveChanges();
         }
