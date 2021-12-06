@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using KuzeyCodeFirst.Models.Abstracts;
 
 namespace KuzeyCodeFirst.Models
 {
     [Table("Urunler")]
-    public class Urun
+    public class Urun : BaseEntity, IKey<int>
     {
         [Key]
         public int Id { get; set; }
@@ -20,5 +21,6 @@ namespace KuzeyCodeFirst.Models
         [ForeignKey(nameof(KategorId))]
         public Kategori Kategori { get; set; }
         public ICollection<SiparisDetay> SiparisDetaylari { get; set; } = new HashSet<SiparisDetay>();
+
     }
 }

@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using KuzeyCodeFirst.Models.Abstracts;
 
 namespace KuzeyCodeFirst.Models
 {
     [Table("Kategoriler")]
-    public class Kategori
+    public class Kategori : BaseEntity, IKey<int>
     {
         [Key]
         public int Id { get; set; }

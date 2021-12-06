@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using KuzeyCodeFirst.Models.Abstracts;
 
 namespace KuzeyCodeFirst.Models
 {
     [Table("Siparisler")]
-    public class Siparis
+    public class Siparis : BaseEntity,IKey<int>
     {
         [Key]
         public int Id { get; set; }
