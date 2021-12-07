@@ -34,21 +34,21 @@ namespace KuzeyCodeFirst
             };
 
             _kategoriRepo.Add(kategori);
-            
+
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
-            var kategori = _dbContext.Kategoriler.First();
-            kategori.Aciklama = "Güncel Açıklama";
-            _dbContext.SaveChanges();
+            var kategori = _kategoriRepo.Get().First();
+            kategori.Ad = "Kategori";
+            kategori.Aciklama = "açıklama";
+            _kategoriRepo.Update(kategori);
         }
 
         private void btnSil_Click(object sender, EventArgs e)
         {
-            var kategori = _dbContext.Kategoriler.First();
-            _dbContext.Kategoriler.Remove(kategori);
-            _dbContext.SaveChanges();
+            var kategori = _kategoriRepo.Get().First();
+            _kategoriRepo.Remove(kategori);
         }
 
         int Topla(in int sayi1, in int sayi2)

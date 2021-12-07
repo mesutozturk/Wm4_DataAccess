@@ -6,5 +6,6 @@ namespace KuzeyCodeFirst.Repository
 {
     public class KategoriRepo : RepositoryBase<Kategori, int>
     {
+        
     }
 }
