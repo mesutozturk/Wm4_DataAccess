@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 
-namespace KuzeyCodeFirst.Repository
+namespace KuzeyCodeFirst.Repository.Abstracts
 {
     public interface IRepository<T, in TId> where T : BaseEntity
     {

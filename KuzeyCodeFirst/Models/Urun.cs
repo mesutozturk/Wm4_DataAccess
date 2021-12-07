@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using KuzeyCodeFirst.Models.Abstracts;
@@ -17,10 +18,12 @@ namespace KuzeyCodeFirst.Models
         [Range(0, 10000)]
         public int StokMiktari { get; set; }
         public bool DevamEtmiyorMu { get; set; } = true;
+        public Guid? TedarikciId { get; set; }
 
         [ForeignKey(nameof(KategorId))]
         public Kategori Kategori { get; set; }
         public ICollection<SiparisDetay> SiparisDetaylari { get; set; } = new HashSet<SiparisDetay>();
-
+        [ForeignKey(nameof(TedarikciId))]
+        public Tedarikci Tedarikci { get; set; }
     }
 }

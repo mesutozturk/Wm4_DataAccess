@@ -1,11 +1,10 @@
-﻿using KuzeyCodeFirst.Models.Abstracts;
+﻿using KuzeyCodeFirst.Data;
+using KuzeyCodeFirst.Models.Abstracts;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
-using System.Windows.Forms.VisualStyles;
-using KuzeyCodeFirst.Data;
-using Microsoft.EntityFrameworkCore;
 
-namespace KuzeyCodeFirst.Repository
+namespace KuzeyCodeFirst.Repository.Abstracts
 {
     public abstract class RepositoryBase<T, TId> : IRepository<T, TId>
         where T : BaseEntity, new()
