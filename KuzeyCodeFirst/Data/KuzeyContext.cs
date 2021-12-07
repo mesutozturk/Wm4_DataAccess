@@ -27,6 +27,7 @@ namespace KuzeyCodeFirst.Data
         public DbSet<Siparis> Siparisler { get; set; }
         public DbSet<SiparisDetay> SiparisDetaylar { get; set; }
         public DbSet<Tedarikci> Tedarikciler { get; set; }
+        public DbSet<Calisan> Calisanlar { get; set; }
 
         public override int SaveChanges()
         {
