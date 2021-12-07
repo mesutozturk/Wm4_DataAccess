@@ -3,6 +3,8 @@ using KuzeyCodeFirst.Models;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using KuzeyCodeFirst.Repository;
+using KuzeyCodeFirst.Repository.Abstracts;
 
 namespace KuzeyCodeFirst
 {
@@ -14,15 +16,25 @@ namespace KuzeyCodeFirst
         }
 
         private KuzeyContext _dbContext = new KuzeyContext();
+        private KategoriRepo _kategoriRepo = new KategoriRepo();
+        private SiparisRepo _siparisRepo = new SiparisRepo();
         private void btnEkle_Click(object sender, EventArgs e)
         {
-            _dbContext.Kategoriler.Add(new Kategori()
+            //_dbContext.Kategoriler.Add(new Kategori()
+            //{
+            //    Ad = "Kategori",
+            //    Aciklama = "açıklama"
+            //});
+            //_dbContext.SaveChanges();
+
+            var kategori = new Kategori()
             {
                 Ad = "Kategori",
                 Aciklama = "açıklama"
-            });
-            _dbContext.SaveChanges();
+            };
 
+            _kategoriRepo.Add(kategori);
+            
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)
@@ -41,8 +53,13 @@ namespace KuzeyCodeFirst
 
         int Topla(in int sayi1, in int sayi2)
         {
-           var toplam = sayi1 + sayi2;
+            var toplam = sayi1 + sayi2;
             return sayi1;
+        }
+
+        private void btnTedarikciEkle_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

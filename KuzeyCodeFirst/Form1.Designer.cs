@@ -32,6 +32,7 @@ namespace KuzeyCodeFirst
             this.btnEkle = new System.Windows.Forms.Button();
             this.btnGuncelle = new System.Windows.Forms.Button();
             this.btnSil = new System.Windows.Forms.Button();
+            this.btnTedarikciEkle = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnEkle
@@ -64,11 +65,22 @@ namespace KuzeyCodeFirst
             this.btnSil.UseVisualStyleBackColor = true;
             this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
+            // btnTedarikciEkle
+            // 
+            this.btnTedarikciEkle.Location = new System.Drawing.Point(12, 182);
+            this.btnTedarikciEkle.Name = "btnTedarikciEkle";
+            this.btnTedarikciEkle.Size = new System.Drawing.Size(125, 96);
+            this.btnTedarikciEkle.TabIndex = 1;
+            this.btnTedarikciEkle.Text = "Tedarikci Ekle";
+            this.btnTedarikciEkle.UseVisualStyleBackColor = true;
+            this.btnTedarikciEkle.Click += new System.EventHandler(this.btnTedarikciEkle_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnTedarikciEkle);
             this.Controls.Add(this.btnSil);
             this.Controls.Add(this.btnGuncelle);
             this.Controls.Add(this.btnEkle);
@@ -83,6 +95,7 @@ namespace KuzeyCodeFirst
         private System.Windows.Forms.Button btnEkle;
         private System.Windows.Forms.Button btnGuncelle;
         private System.Windows.Forms.Button btnSil;
+        private System.Windows.Forms.Button btnTedarikciEkle;
     }
 }
 
