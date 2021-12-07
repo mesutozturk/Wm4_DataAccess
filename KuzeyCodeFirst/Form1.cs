@@ -38,5 +38,11 @@ namespace KuzeyCodeFirst
             _dbContext.Kategoriler.Remove(kategori);
             _dbContext.SaveChanges();
         }
+
+        int Topla(in int sayi1, in int sayi2)
+        {
+           var toplam = sayi1 + sayi2;
+            return sayi1;
+        }
     }
 }
